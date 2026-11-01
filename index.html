@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Onda</title>
+  <meta name="description" content="Onda: busca, escucha y descubre música desde el móvil.">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Para "Añadir a la pantalla de inicio": nombre, colores e iconos propios -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icono.svg" type="image/svg+xml">
+  <link rel="icon" href="icono-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icono-192.png">
+  <meta name="apple-mobile-web-app-title" content="Onda">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cabecera: logo, nombre de la pantalla y botón de Ajustes -->
+  <header class="topbar">
+    <a class="logo" href="#/inicio" aria-label="Onda, ir a Inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16c3-8 6-8 8.5 0s5.5 8 8.5 0 6-8 9 0"/></svg>
+      <span>Onda</span>
+    </a>
+    <h1 id="titulo-pantalla">Inicio</h1>
+    <a class="icon-btn" href="#/ajustes" aria-label="Ajustes" id="btn-ajustes"></a>
+  </header>
+
+  <!-- Aquí se pinta la pantalla actual -->
+  <main id="app"></main>
+
+  <!-- Mini reproductor: solo se ve cuando hay algo sonando -->
+  <div id="mini" class="mini" hidden></div>
+
+  <!-- Barra de navegación inferior -->
+  <nav class="tabbar" id="tabbar" aria-label="Secciones"></nav>
+
+  <!-- Reproductor grande a pantalla completa -->
+  <section id="grande" class="grande" hidden aria-label="Reproductor"></section>
+
+  <!-- Reproductor oficial de YouTube: siempre visible mientras suena un vídeo.
+       main.js lo coloca sobre el reproductor grande o en una ventanita flotante.
+       El asa va FUERA del vídeo: se arrastra para mover la ventanita o se toca para abrir. -->
+  <div id="yt-caja" class="yt-caja" hidden>
+    <button id="yt-asa" class="yt-asa" type="button" aria-label="Arrastra para mover el vídeo o toca para abrir el reproductor">
+      <span class="asa-marca"></span><span id="yt-asa-icono" class="asa-icono"></span>
+    </button>
+    <div class="yt-hueco"><div id="yt-player"></div></div>
+  </div>
+
+  <!-- Hoja que sale desde abajo (opciones de canción, listas, etiquetas) -->
+  <div id="hoja-fondo" class="hoja-fondo" hidden>
+    <div id="hoja" class="hoja" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Avisos breves (guardado, errores...) -->
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
