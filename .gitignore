@@ -9,3 +9,5 @@ node_modules/
 # Secretos: nunca se suben
 .env
 .env.*
+
+.vercel
